@@ -1,38 +1,149 @@
-.App {
-    text-align: center;
+/* Netflix Clone Custom Styles */
+
+/* Hide scrollbars for content rows */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
+/* Smooth transitions for all elements */
+* {
+  transition: all 0.3s ease;
 }
 
-.App-header {
-    background-color: #0f0f10;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
+/* Custom Netflix red color */
+:root {
+  --netflix-red: #E50914;
+  --netflix-black: #141414;
+  --netflix-dark-gray: #2F2F2F;
+  --netflix-light-gray: #B3B3B3;
 }
 
-.App-link {
-    color: #61dafb;
+/* Body and global styles */
+body {
+  background-color: var(--netflix-black);
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  overflow-x: hidden;
 }
 
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+/* Custom button hover effects */
+button {
+  transition: all 0.2s ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+}
+
+/* Movie card hover animations */
+.movie-card {
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.movie-card:hover {
+  transform: scale(1.05);
+  z-index: 10;
+}
+
+/* Loading animation */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Backdrop blur for header */
+.backdrop-blur-sm {
+  backdrop-filter: blur(8px);
+}
+
+/* Custom scrollbar for modal */
+.modal-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+
+.modal-scroll::-webkit-scrollbar-track {
+  background: #2F2F2F;
+}
+
+.modal-scroll::-webkit-scrollbar-thumb {
+  background: #B3B3B3;
+  border-radius: 4px;
+}
+
+.modal-scroll::-webkit-scrollbar-thumb:hover {
+  background: #E50914;
+}
+
+/* Hero section gradient overlays */
+.hero-gradient-left {
+  background: linear-gradient(90deg, 
+    rgba(0,0,0,1) 0%, 
+    rgba(0,0,0,0.8) 30%, 
+    rgba(0,0,0,0.4) 60%, 
+    rgba(0,0,0,0) 100%);
+}
+
+.hero-gradient-bottom {
+  background: linear-gradient(0deg, 
+    rgba(0,0,0,1) 0%, 
+    rgba(0,0,0,0.8) 20%, 
+    rgba(0,0,0,0) 100%);
+}
+
+/* Search input focus styles */
+input:focus {
+  outline: none;
+  border-color: var(--netflix-red);
+  box-shadow: 0 0 0 2px rgba(229, 9, 20, 0.2);
+}
+
+/* Content row spacing */
+.content-row {
+  margin-bottom: 3rem;
+}
+
+/* Responsive font sizes */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2rem;
+  }
+  
+  .hero-description {
+    font-size: 1rem;
+  }
+}
+
+/* Modal animation */
+.modal-enter {
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+.modal-enter-active {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.modal-exit {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.modal-exit-active {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 300ms, transform 300ms;
 }
